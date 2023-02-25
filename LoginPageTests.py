@@ -89,3 +89,7 @@ class TestWebsite(unittest.TestCase):
             ec.visibility_of_element_located((headline_request_free_demo_locator, headline_request_free_demo_value))
         )
         assert headline_request_free_demo.is_displayed()
+        
+if __name__ == '__main__':
+    unittest.main()
+    
