@@ -23,9 +23,8 @@ This is a set of automated tests to verify the login functionality of the Hudl w
     ```
 - To run a specific test, execute the following command:
     ```
-    python -m unittest <module_name>
+    python -m unittest -k 'test_name' LoginPageTests.py
     ```
-    Replace "<module_name>" with the name of the test method you want to run.
 
 ## Description of the tests:
  - test_successfully_login - This test logs in with a valid email and password and verifies that the search input is displayed on the home page.
