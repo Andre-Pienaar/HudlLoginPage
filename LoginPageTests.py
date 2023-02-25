@@ -1,10 +1,9 @@
-import pytest
+import unittest
 from selenium import webdriver
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.ui import WebDriverWait
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.core.utils import ChromeType
-
 from PageObject.HudlHomePage import HudlHomePage
 from PageObject.HudlLoginPage import HudlLoginPage
 from PageObject.HudlPage import HudlPage
@@ -12,10 +11,9 @@ from PageObject.HudlLoginHelpPage import HudlLoginHelpPage
 from PageObject.HudlRegisterSignupPage import HudlRegisterSignupPage
 
 
-class TestWebsite:
+class TestWebsite(unittest.TestCase):
 
-    @pytest.fixture(autouse=True)
-    def browser_setup_and_teardown(self):
+    def setUp(self):
         self.driver = webdriver.Chrome(
             executable_path=ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
         self.driver.maximize_window()
@@ -23,8 +21,7 @@ class TestWebsite:
         hudl_page = HudlPage(self.driver)
         hudl_page.get_link_login.click()
 
-        yield
-
+    def tearDown(self):
         self.driver.close()
         self.driver.quit()
 
